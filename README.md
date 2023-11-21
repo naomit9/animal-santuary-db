@@ -78,17 +78,28 @@ To view all the active animals who come to the sanctuary in 2023.
 The animal sanctuary is open to the public within certain hours, excluding certain holidays. How can we generate a calendar that shows when the sanctuary is open?
 
 #### PROBLEM STATEMENT
-The lack of a systemic and automated approach to communicate the open hours to the public leads to inconvenience and dissatisfaction. The challenge is to generate a calendar showcasing the sanctuary's opening hours while accounting for the holidays. The goal is to make this information more reliable and accessible to the public to enhance their experiences.
+The aim is to generate a calendar showcasing the sanctuary's opening hours while accounting for the holidays. The goal is to develop a database schema and associated functionalities to efficiently manage and display the operating hours.
 
 #### OPERATING HOURS TABLE
 **This table stores information about days of the week and the opening and closing time at the sanctuary**
 * _Columns_:
-    * `days` (VARCHAR Primary Key)
+    * `operating_hour_id` (INT Primary Key)
+    * `days_of_week` (VARCHAR)
     * `open_time` (TIME NOT NULL)
     * `close_time` (TIME NOT NULL)
 
 #### HOLIDAYS TABLE
 **This table stores information about the Ontario Statutory Holidays when the sanctuary is closed**
 * _Columns_:
-    * `holiday_date` (DATE Primary Key)
+    * `holiday_id` (INT Primary Key)
     * `holiday_name` (VARCHAR NOT NULL)
+    * `holiday_date` (DATE)
+
+
+##### VIEW: PUBLIC SCHEDULE
+To display necessary information to the public
+
+
+
+
+##### TRIGGER
