@@ -1,5 +1,7 @@
 /* FEATURE 1
-This script is used to populate all of the Tables in the Database. */
+This script is used to populate all of the Tables in the Database. 
+
+NOTE: FEATURE 2 SEE BELOW*/
 
 /* Script to populate ANIMALS table */
 INSERT INTO animals VALUES (101, 'Dumbo', 'Male', 'Mammal', 'Elephant', 'Elephant Enclosure', '2022-10-23', 'Active');
@@ -53,3 +55,9 @@ INSERT INTO animal_status VALUES (3, 'Transferred');
 INSERT INTO transfer_table VALUES (1, 104, 'Bernard', 1005, '2020-12-31', 'Transferred', 'Chicago Zoo');
 INSERT INTO transfer_table VALUES (2, 106, 'Blue', 1001, '2020-12-31', 'Transferred', 'Chicago Zoo');
 INSERT INTO transfer_table VALUES (3, 107, 'Marlow', 1002, '2020-12-31', 'Transferred', 'Chicago Zoo');
+
+-------------------------------------------------------------------------------------------------------
+
+/* FEATURE 2
+This script is used to populate all of the Tables in the Database. */
+

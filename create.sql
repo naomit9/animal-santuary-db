@@ -1,5 +1,7 @@
 /*FEATURE 1: 
 This script is used to create the initial tables in the database to support the first problem
+
+NOTE: FEATURE 2 SEE BELOW
 */
 
 /* 
@@ -110,4 +112,20 @@ CREATE TABLE transfer (
     CONSTRAINT CHK_status CHECK (animal_status IN ('Active', 'Died', 'Transferred', 'Adopted')),
     CONSTRAINT FK_animal FOREIGN KEY (animal_id) REFERENCES animals(animal_id),
 	CONSTRAINT FK_enclosure FOREIGN KEY (enclosure_id) REFERENCES transfer(enclosure_id)
+);
+
+----------------------------------------------------------------------------------------------------
+/*FEATURE 2: 
+This script is used to create the initial tables in the database to support the second problem
+*/
+
+CREATE TABLE operating_hours (
+    days_of_week VARCHAR(50) PRIMARY KEY,
+    open_time TIME NOT NULL,
+    close_time TIME NOT NULL
+);
+
+CREATE TABLE holidays (
+    holiday_date DATE PRIMARY KEY,
+    holiday_name VARCHAR(50) NOT NULL
 );
