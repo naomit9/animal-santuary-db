@@ -1,4 +1,4 @@
-/*FEATURE 1
+/*STORED PROCEDURE FOR FEATURE 1
 to calculate the stay duration for a given animal id.
 */
 

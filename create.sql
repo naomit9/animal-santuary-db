@@ -137,12 +137,22 @@ This script is used to create the initial tables in the database to support the 
 */
 
 CREATE TABLE operating_hours (
+    operating_hours_id INT,
     days_of_week VARCHAR(50) PRIMARY KEY,
     open_time TIME NOT NULL,
     close_time TIME NOT NULL
 );
 
 CREATE TABLE holidays (
+    holiday_id INT,
     holiday_date DATE PRIMARY KEY,
     holiday_name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE schedule (
+    schedule_id INT,
+    operating_hours_id INT,
+    holiday_id INT,
+    open_time TIME NOT NULL,
+    close_time TIME NOT NULL
 );

@@ -1,6 +1,6 @@
 /* FEATURE 1
 ##### VIEW
-To view all the active animals who come to the sanctuary in 2023.
+To view the status of all the animals at the sanctuary without having to open multiple tables
 */
 
 CREATE VIEW animal_status_view
@@ -28,6 +28,22 @@ LEFT JOIN
 
 /* FEATURE 2
 ##### VIEW
-To take in the current day of the week and display the status of the sanctuary operating hours based on open, close or holiday.
+To view a schedule with the operating hours and the holidays
  */
-
+CREATE VIEW schedule_view
+AS
+SELECT
+    s.schedule_id,
+    s.schedule_date,
+    oh.days_of_week,
+    oh.open_time AS 'operating_hours_open_time',
+    oh.close_time AS 'operating_hours_close_time',
+    h.holiday_name,
+    s.open_time AS 'scheduled_open_time',
+    s.close_time AS 'scheduled_close_time'
+FROM
+    schedule s
+LEFT JOIN
+    operating_hours oh ON oh.operating_hours_id = s.operating_hours_id
+LEFT JOIN
+    holidays h ON s.holiday_id = h.holiday_id;
