@@ -3,13 +3,26 @@
 To view all the active animals who come to the sanctuary in 2023.
 */
 
-CREATE VIEW animals_2023
+CREATE VIEW animal_status_view
 AS
-SELECT animal_id, animal_name, animal_type, enclosure_type
-FROM animals
-WHERE arrival_date LIKE '%2023%' 
-AND animal_status = 'Active';
-
+SELECT 
+	a.animal_id,
+    a.name,
+    a.arrival_date,
+    a.status_id, 
+    s1.animal_status AS current_status,
+    t.transfer_id,
+    t.transfer_date 
+    t.new_location
+    s2.animal_status AS transfer_status
+FROM 
+	animals a
+JOIN 
+	status s1 ON a.status_id = s1.status_id
+LEFT JOIN 
+	transfer t ON a.animal_id = t.animal_id
+LEFT JOIN
+    status s2 ON t.status_id = s2.status_id;
 
 
 

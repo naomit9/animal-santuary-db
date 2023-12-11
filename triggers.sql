@@ -1,35 +1,34 @@
 /* FEATURE 1 
-##### TRIGGER 1: UPDATE THE ANIMALS TABLE WHEN AN ANIMAL ARRIVES AT THE SANCTUARY
-When a new animal arrives, a new record is inserted in the `animals` table and this event creates a trigger to automatically update the status column in the `animals` table.
-*/
+the trigger is configured to update the animals table when a new record is inserted into the transfer table.*/
+UPDATE animals
+SET status = 'Active',
+    arrival_date = NEW.arrival_date
+	WHERE animal_id = NEW.animal_id;
 
 DELIMITER $$
-CREATE TRIGGER after_animals_insert
-AFTER INSERT
-ON animals
+CREATE TRIGGER update_animal_arrival
+BEFORE UPDATE ON animals
 FOR EACH ROW
 BEGIN
-        IF NEW.status IS NULL OR NEW.status = '' THEN
-	    UPDATE animals
-	    SET status = 'Active'
-	    WHERE animal_id = NEW.animal.id;
-END IF; 
+	    SET NEW.status = 'Active';
+		SET NEW.arrival_date = NOW();
 END; $$
-DELIMITER ;  
+DELIMITER ; 
 
 /*
-##### TRIGGER 2: UPDATE THE TRANSFER TABLE WHEN AN ANIMAL LEAVES THE SANCTUARY
-When an animal leaves, their record is inserted in the `transfer` table and this event creates a trigger to automatically update the status column to 'Transferred' in the `animal` table
-and at the same time, update the transfer_date column in the animals table.
+##### TRIGGER 2: UPDATE THE ANIMALS TABLE WHEN AN ANIMAL LEAVES THE SANCTUARY
 */
+UPDATE animals
+SET status = 'Transferred',
+    transfer_date = NEW.transfer_date
+	WHERE animal_id = NEW.animal_id;
+
 DELIMITER $$
-CREATE TRIGGER after_transfer_insert
-AFTER INSERT
-ON transfer
+CREATE TRIGGER update_animal_transfer
+BEFORE UPDATE ON animals
 FOR EACH ROW
 BEGIN
-	    UPDATE animals
-	    SET status = 'Transferred'
-	    WHERE animal_id = OLD.animal.id; /*UPDATE THE TRANSFER DATE ALSO*/
+	    SET NEW.status = 'Transferred';
+		SET NEW.transfer_date = NOW();
 END; $$
 DELIMITER ; 

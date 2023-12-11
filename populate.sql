@@ -4,14 +4,20 @@ This script is used to populate all of the Tables in the Database.
 NOTE: FEATURE 2 SEE BELOW*/
 
 /* Script to populate ANIMALS table */
-INSERT INTO animals VALUES (101, 'Dumbo', 'Male', 'Mammal', 'Elephant', 'Elephant Enclosure', '2022-10-23', 'Active');
-INSERT INTO animals VALUES (102, 'Fuzzy', 'Female', 'Bird', 'Parrot', 'Rainforest Enclosure', '2021-11-09', 'Active');
-INSERT INTO animals VALUES (103, 'Berry', 'Male', 'Reptile', 'Snake', 'Rainforest Enclosure', '2023-02-01', 'Active');
-INSERT INTO animals VALUES (104, 'Bernard', 'Male', 'Mammal', 'Penguin', 'Arctic Enclosure', '2019-12-01', 'Transfered');
-INSERT INTO animals VALUES (105, 'Cray-cray', 'Female', 'Fish', 'Stingray', 'Aquarium', '2023-05-05', 'Active');
-INSERT INTO animals VALUES (106, 'Gigi', 'Female', 'Mammal', 'Giraffe', 'Savannah Enclosure', '2018-12-03', 'Tranferred');
-INSERT INTO animals VALUES (107, 'Marlow', 'Not Specified', 'Mammal', 'Zebra', 'Savannah Enclosure', '2019-10-27', 'Tranferred');
-
+INSERT INTO animals VALUES (101, 'Dumbo', 1, 1, 1, 1004, '2022-10-23', null , 1);
+INSERT INTO animals VALUES (102, 'Fuzzy', 2, 2, 2, 1002, '2021-11-09', null, 1);
+INSERT INTO animals VALUES (103, 'Berry', 1, 3, 3, 1002,'2023-02-01', null, 1);
+INSERT INTO animals VALUES (104, 'Bernard', 1, 1, 4, 1005, '2019-12-01', '2020-12-31', 3);
+INSERT INTO animals VALUES (105, 'Cray-cray', 2, 5, 5, 1003, '2023-05-05', null, 1);
+INSERT INTO animals VALUES (106, 'Gigi', 2, 1, 6, 1001, '2018-12-03', '2020-12-31', 3);
+INSERT INTO animals VALUES (107, 'Marlow', 3, 1, 7, 1001, '2019-10-27', '2020-12-31', 3);
+INSERT INTO animals VALUES (108, 'Tikki', 2, 5, 4, 1001, '2022-10-23', '2020-12-31' , 3);
+INSERT INTO animals VALUES (109, 'Lucky', 3, 1, 2, 1003, '2021-11-09', '2020-12-31', 3);
+INSERT INTO animals VALUES (110, 'Nicholas', 2, 2, 3, 1004,'2023-02-01', null, 1);
+INSERT INTO animals VALUES (111, 'Fluffy', 1, 3, 4, 1006, '2019-12-01', '2020-12-31', 3);
+INSERT INTO animals VALUES (112, 'Buddy', 1, 3, 5, 1006, '2023-05-05', null, 1);
+INSERT INTO animals VALUES (113, 'Scrappy', 3, 1, 6, 1001, '2018-12-03', '2020-12-31', 3);
+INSERT INTO animals VALUES (114, 'Snoopy', 3, 1, 7, 1002, '2019-10-27', '2020-12-31', 3);
 
 /* Script to populate ENCLOSURES table */
 INSERT INTO enclosures VALUES (1001, 'Savannah Enclosure', 'Suitable for animals that inhabit grasslands, such as zebras, giraffes, and antelopes.');
@@ -43,6 +49,8 @@ INSERT INTO animal_type VALUES (2, 'Parrot');
 INSERT INTO animal_type VALUES (3, 'Snake');
 INSERT INTO animal_type VALUES (4, 'Penguin');
 INSERT INTO animal_type VALUES (5, 'Stingray');
+INSERT INTO animal_type VALUES (6, 'Giraffe');
+INSERT INTO animal_type VALUES (7, 'Zebra');
 
 
 /* Script to populate ANIMAL_STATUS table */
@@ -52,10 +60,15 @@ INSERT INTO animal_status VALUES (3, 'Transferred');
 
 
 /* Script to populate TRANSFER table */
-INSERT INTO transfer_table VALUES (1, 104, 'Bernard', 1005, '2020-12-31', 'Transferred', 'Chicago Zoo');
-INSERT INTO transfer_table VALUES (2, 106, 'Blue', 1001, '2020-12-31', 'Transferred', 'Chicago Zoo');
-INSERT INTO transfer_table VALUES (3, 107, 'Marlow', 1002, '2020-12-31', 'Transferred', 'Chicago Zoo');
+INSERT INTO transfer VALUES (1, 104, 1005,'Bernard', '2020-12-31', 3, 'Chicago Zoo');
+INSERT INTO transfer VALUES (2, 106, 1001,'Blue', '2020-12-31', 3, 'Chicago Zoo');
+INSERT INTO transfer VALUES (3, 107, 1002,'Marlow', '2020-12-31', 3, 'Chicago Zoo');
 
+/* Script to populate ARRIVAL table */ /**/
+INSERT INTO arrival VALUES(1, 101, 1004, '2022-10-23', 'Dumbo', 1);
+INSERT INTO arrival VALUES(2, 102, 1002, '2021-11-09', 'Fuzzy', 1);
+INSERT INTO arrival VALUES(3, 103, 1002, '2021-11-09', 'Berry', 1);
+INSERT INTO arrival VALUES(4, 105, 1003, '2021-11-09', 'Cray-cray', 1);
 -------------------------------------------------------------------------------------------------------
 
 /* FEATURE 2

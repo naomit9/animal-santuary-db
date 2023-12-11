@@ -55,14 +55,14 @@ _[How table is populated](./populate.sql)_
     * `new_location` (VARCHAR)
 * _Constraints_:
     * Ensure foreign key `animal_id` is referencing to the `animal_id` in `animals` table
-    * Ensure foreign key `enclosure_id`  is referencing to the `enclosure_id` in the `enclorsures` table
+    * Ensure foreign key `enclosure_id`  is referencing to the `enclosure_id` in the `enclosures` table
     * Ensure `animal_status` must be the predefined values.
 
 #### SAMPLE TABLE
 
 | transfer_id  | animal_id  | name  | enclosure_id  | transfer_date  | status      | new_location |
 |--------------|------------|-------|---------------|----------------|-------------|--------------|
-|             1|         104|Bernard|        1005   |    2020-12-31  | Transferred |   Chicago Zoo|
+|             1|         104|Bernard|        1005   |    2020-12-31  | Transferred | Chicago Zoo  |
 |             2|         106| Blue  |          1001 |    2020-12-31  | Transferred | Chicago Zoo  |
 |             3|         107| Marlow|          1002 |    2020-12-31  | Transferred | Chicago Zoo  |
 
@@ -84,7 +84,21 @@ _[How table is populated](./populate.sql)_
 
 #### VIEW - [See file](./views.sql)
 To view all the active animals who come to the sanctuary in 2023.
+* _Columns_:
+    * `animal_id` 
+    * `animal_name`
+    * `animal_type`
+    * `enclosure_type`
+WHERE `arrival_date` LIKE '%2023%' AND `animal_status` = 'Active';
 
+#### STORED FUNCTION 
+To calculate how long an animal has stayed at the sanctuary before they were transferred to another place.
+* _Parameters_:
+    * `arrival_date`
+    * `transfer_date`
+* _Returns_:
+1. The number of days between two dates, the `arrival_date` will be subtracted from the `transfer_date` 
+2. Use the DATEIFF() function 
 ------------------------------------------------------------------------------------------------------------------------------
 
 ### FEATURE 2:
@@ -155,7 +169,7 @@ To take in the current day of the week, convert it into a string and use it to d
 
 | current_date | status |
 |--------------|--------|
-|   2023-12-25 | Closed |
+|   2023-12-25 | Holiday|
 
 
 #### TRIGGER: UPDATE THE SCHEDULE STATUS BEFORE INSERT INTO PUBLIC SCHEDULE VIEW [See file](./triggers.sql)
@@ -166,7 +180,8 @@ To take in the current day of the week, convert it into a string and use it to d
 5. If it is a holiday, the status will display 'Holiday'.
 6. If it is neither a holiday, nor a regular day, the status will display 'Closed'.
 
-#### STORED FUNCTION: CALCULATE THE REMAINING HOURS THE ANIMAL SANCTUARY WILL HAVE UNTIL CLOSING TIME
+#### STORED FUNCTION: 
+To calculate the remaining time the 
 * _Parameters_:
     * `close_time` (TIME NOT NULL)
 * _Returns_: the remaining time as an INTERVAL data type
