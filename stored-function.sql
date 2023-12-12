@@ -1,3 +1,36 @@
+/*STORED FUNCTION FOR FEATURE 1
+This function takes in the arrival_date and the transfer_date as parameters and calculates the difference 
+*/
+DELIMITER //
+CREATE FUNCTION calculate_stay_duration(arrival_date DATE, transfer_date DATE)
+RETURNS INT
+BEGIN   
+    DECLARE duration INT;
+
+    /* if the animal is still staying at the sanctuary, it will take in the current date. */
+    IF transfer_date IS NULL THEN
+        SET transfer_date = CURDATE();
+    END IF;
+
+    /* calculate the duration in days */
+    SET duration = DATEDIFF(transfer_date, arrival_date);
+
+    RETURN duration;
+
+END //
+DELIMITER ;
+
+
+SELECT
+	animal_id,
+    arrival_date,
+    transfer_date,
+    calculate_stay_duration(transfer_date, arrival_date) AS duration
+FROM animals;
+
+/*=================================================================================================================================================*/
+
+
 /* STORED FUNCTION FOR FEATURE 2
 This function takes in a date parameter and checks whether the date is associated with a holiday or operating hours
 */
